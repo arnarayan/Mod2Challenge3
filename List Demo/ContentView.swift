@@ -8,9 +8,34 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    var array = ["Element 1", "Element 2", "Element 3"]
+    var array2 = ["another 1", "another 2", "another 3"]
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+
+        NavigationView{
+            List {
+                ForEach(array, id: \.self) { elem in
+                    NavigationLink(destination: Text(elem), label: {
+                        Text("Click Me")
+                    })
+                    
+                }
+            }.navigationTitle("Test Title")
+        }
+
+        List {
+            ForEach(array, id: \.self) { elem in
+                Text(elem)
+            }
+                
+        }
+
+        
+        List(array2, id: \.self) { elemr in
+            Text(elemr)
+        }
     }
 }
 
